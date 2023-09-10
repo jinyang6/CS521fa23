@@ -20,7 +20,7 @@ x.requires_grad_() # this is required so we can compute the gradient w.r.t x
 
 t = 0 # target class
 
-epsReal = 10.0 #depending on your data this might be large or small
+epsReal = 1.50 #depending on your data this might be large or small
 eps = epsReal - 1e-7 # small constant to offset floating-point erros
 
 # The network N classfies x as belonging to class 2
@@ -57,3 +57,4 @@ print("New Class: ", new_class)
 assert(new_class == t)
 # it is not enough that adv_x is classified as t. We also need to make sure it is 'close' to the original x. 
 assert( torch.norm((x-adv_x), p=float('inf')) <= epsReal)
+print(torch.norm((x-adv_x), p=float('inf')))
