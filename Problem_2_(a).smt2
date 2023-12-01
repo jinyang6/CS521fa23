@@ -1,3 +1,6 @@
+; You can edit this code!
+; Click here and start typing.
+
 ; Lines that start with a semicolon are comments
 
 ; Define the function for which you are constructing a transformer
@@ -25,6 +28,7 @@
 (declare-const x Real)
 (declare-const l Real)
 (declare-const u Real)
+(declare-const y Real)
 
 ; store complex expressions in intermediate variables
 ; output under the function
@@ -38,15 +42,9 @@
 (assert (= u_Tf (Tf_upper l u)))
 
 
-(assert (not                         ; negation of soundness property 
-(=>  
-    (and (<= l x) (<= x u))          ; if input is within given bounds
-    (and (<= l_Tf fx) (<= fx u_Tf))  ; then output is within transformer bounds
-)))
+
+;; For all y, Tf_lower([l,u]) <= y <= Tf_upper([l,u])
+;; E x such that f(x) == y, x in [l,u]
 
 
-; This command asks the solver to check the satisfiability of your query
-; If you wrote a sound transformer, the solver should say 'unsat'
-(check-sat)
-; If the solver returns 'sat', uncommenting the line below will give you the values of the various variables that violate the soundness property. This will help you debug your solution.
-;(get-model)
+(forall  )
