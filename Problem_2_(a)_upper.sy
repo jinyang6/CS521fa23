@@ -31,7 +31,7 @@
                     (= (Tf_upper l u) (- l))
             )
 )
-(constraint (=> (<= l u) (>= (Tf_upper l u) (ite (> (- l) u) (- l) u) )))
+(constraint (=> (<= l u) (>= (Tf_upper l u) (ite (>= (- l) u) (- l) u) )))
 
 (check-synth)
 

@@ -6,18 +6,18 @@
 ; Define the function for which you are constructing a transformer
 
 (define-fun f ((x Real)) Real
-(ite (> x 0) x (- x))       ; absolute value function
+       ( - x (abs x) )
 )
 
 ; Define the transformer as two functions
 ; one for the lower bound of the range and one for the upper bound
 
 
-(define-fun Tf_lower ((l Real) (u Real)) Real (ite (<= l 0.0) (ite (> 0.0 u) (- u) 0.0) l))
+(define-fun Tf_lower ((l Real) (u Real)) Real (ite (<= 0.0 l) 0.0 (- l (- l))))
 
 
 
-(define-fun Tf_upper ((l Real) (u Real)) Real (let ((_let_1 (- l))) (ite (> u _let_1) u _let_1)))
+(define-fun Tf_upper ((l Real) (u Real)) Real (ite (<= 0.0 u) 0.0 (- u (- u))))
 
 
 (declare-const x Real)
